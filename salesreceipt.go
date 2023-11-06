@@ -1,4 +1,3 @@
-
 package quickbooks
 
 import (
@@ -9,43 +8,43 @@ import (
 )
 
 type SalesReceipt struct {
-	ID        string   `json:"Id,omitempty"`
-	SyncToken string   `json:",omitempty"`
-	MetaData  MetaData `json:",omitempty"`
-	DocNumber string `json:",omitempty"`
-	TxnDate   Date   `json:",omitempty"`
-	PrivateNote string `json:",omitempty"`
-	Line 	[]Line
-	BillAddr     PhysicalAddress `json:",omitempty"`
-	ShipAddr     PhysicalAddress `json:",omitempty"`
-	ShipFromAddr     PhysicalAddress `json:",omitempty"`
-	PaymentRefNum string `json:",omitempty"`
-	Domain string `json:"domain,omitempty"`
+	ID            string   `json:"Id,omitempty"`
+	SyncToken     string   `json:",omitempty"`
+	MetaData      MetaData `json:",omitempty"`
+	DocNumber     string   `json:",omitempty"`
+	TxnDate       Date     `json:",omitempty"`
+	PrivateNote   string   `json:",omitempty"`
+	Line          []Line
+	BillAddr      PhysicalAddress `json:",omitempty"`
+	ShipAddr      PhysicalAddress `json:",omitempty"`
+	ShipFromAddr  PhysicalAddress `json:",omitempty"`
+	PaymentRefNum string          `json:",omitempty"`
+	Domain        string          `json:"domain,omitempty"`
 
 	ShipMethodRef ReferenceType `json:",omitempty"`
 	ShipDate      Date          `json:",omitempty"`
 	TrackingNum   string        `json:",omitempty"`
 	TotalAmt      json.Number   `json:",omitempty"`
 
-	CurrencyRef ReferenceType `json:",omitempty"`
-	ExchangeRate          json.Number  `json:",omitempty"`
-	PrintStatus string `json:",omitempty"`      // Valid values: NotSet, NeedToPrint, PrintComplete
-	EmailStatus string `json:",omitempty"`
-	HomeTotalAmt          json.Number  `json:",omitempty"`
-	FreeFormAddress bool `json:",omitempty"`
-	ApplyTaxAfterDiscount bool `json:",omitempty"`
-	Spare bool `json:"spare,omitempty"`
-	DepositToAccountRef ReferenceType `json:",omitempty"`
-	CustomerMemo MemoRef `json:",omitempty"`
-	ProjectRef ReferenceType `json:",omitempty"`
+	CurrencyRef           ReferenceType `json:",omitempty"`
+	ExchangeRate          json.Number   `json:",omitempty"`
+	PrintStatus           string        `json:",omitempty"` // Valid values: NotSet, NeedToPrint, PrintComplete
+	EmailStatus           string        `json:",omitempty"`
+	HomeTotalAmt          json.Number   `json:",omitempty"`
+	FreeFormAddress       bool          `json:",omitempty"`
+	ApplyTaxAfterDiscount bool          `json:",omitempty"`
+	Spare                 bool          `json:"spare,omitempty"`
+	DepositToAccountRef   ReferenceType `json:",omitempty"`
+	CustomerMemo          MemoRef       `json:",omitempty"`
+	ProjectRef            ReferenceType `json:",omitempty"`
 
-	Balance json.Number `json:",omitempty"`
-	CustomerRef ReferenceType `json:",omitempty"`
-	TxnTaxDetail TxnTaxDetail `json:",omitempty"`
+	Balance          json.Number   `json:",omitempty"`
+	CustomerRef      ReferenceType `json:",omitempty"`
+	TxnTaxDetail     TxnTaxDetail  `json:",omitempty"`
 	PaymentMethodRef ReferenceType `json:",omitempty"`
 
-	GlobalTaxCalculation string `json:",omitempty"`  // Values: TaxExcluded, TaxInclusive, NotApplicable
-	DepositToAccount ReferenceType `json:",omitempty"`
+	GlobalTaxCalculation string        `json:",omitempty"` // Values: TaxExcluded, TaxInclusive, NotApplicable
+	DepositToAccount     ReferenceType `json:",omitempty"`
 }
 
 func (c *Client) CreateSalesReceipt(receipt *SalesReceipt) (*SalesReceipt, error) {
@@ -82,7 +81,7 @@ func (c *Client) CreateSalesReceipt(receipt *SalesReceipt) (*SalesReceipt, error
 
 	var r struct {
 		SalesReceipt SalesReceipt
-		Time Date
+		Time         Date
 	}
 
 	err = json.NewDecoder(res.Body).Decode(&r)
