@@ -82,9 +82,9 @@ type Line struct {
 	Amount                        json.Number
 	DetailType                    string
 	AccountBasedExpenseLineDetail AccountBasedExpenseLineDetail
-	SalesItemLineDetail           SalesItemLineDetail `json:",omitempty"`
-	DiscountLineDetail            DiscountLineDetail  `json:",omitempty"`
-	TaxLineDetail                 TaxLineDetail       `json:",omitempty"`
+	SalesItemLineDetail           *SalesItemLineDetail `json:",omitempty"`
+	DiscountLineDetail            *DiscountLineDetail  `json:",omitempty"`
+	TaxLineDetail                 *TaxLineDetail       `json:",omitempty"`
 }
 
 // TaxLineDetail ...
@@ -99,14 +99,14 @@ type TaxLineDetail struct {
 
 // SalesItemLineDetail ...
 type SalesItemLineDetail struct {
-	ItemRef   ReferenceType `json:",omitempty"`
-	ClassRef  ReferenceType `json:",omitempty"`
+	ItemRef   *ReferenceType `json:",omitempty"`
+	ClassRef  *ReferenceType `json:",omitempty"`
 	UnitPrice json.Number   `json:",omitempty"`
 	//MarkupInfo
 	Qty             float32       `json:",omitempty"`
-	ItemAccountRef  ReferenceType `json:",omitempty"`
-	TaxCodeRef      ReferenceType `json:",omitempty"`
-	ServiceDate     Date          `json:",omitempty"`
+	ItemAccountRef  *ReferenceType `json:",omitempty"`
+	TaxCodeRef      *ReferenceType `json:",omitempty"`
+	ServiceDate     *Date          `json:",omitempty"`
 	TaxInclusiveAmt json.Number   `json:",omitempty"`
 	DiscountRate    json.Number   `json:",omitempty"`
 	DiscountAmt     json.Number   `json:",omitempty"`
