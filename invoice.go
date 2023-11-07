@@ -81,7 +81,7 @@ type Line struct {
 	Description                   string `json:",omitempty"`
 	Amount                        json.Number
 	DetailType                    string
-	AccountBasedExpenseLineDetail AccountBasedExpenseLineDetail
+	AccountBasedExpenseLineDetail *AccountBasedExpenseLineDetail
 	SalesItemLineDetail           *SalesItemLineDetail `json:",omitempty"`
 	DiscountLineDetail            *DiscountLineDetail  `json:",omitempty"`
 	TaxLineDetail                 *TaxLineDetail       `json:",omitempty"`
