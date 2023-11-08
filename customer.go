@@ -107,6 +107,33 @@ func (c *Client) QueryCustomerByName(name string) (*Customer, error) {
 	return &r.QueryResponse.Customer[0], nil
 }
 
+// QueryCustomerByName gets a customer with a given name.
+func (c *Client) QueryCustomerByEmail(email string) (*Customer, error) {
+
+        var r struct {
+                QueryResponse struct {
+                        Customer []Customer
+                        TotalCount int
+                }
+        }
+        err := c.query("SELECT * FROM Customer WHERE PrimaryEmailAddr = '"+
+                strings.Replace(email, "'", "''", -1)+"'", &r)
+        if err != nil {
+                return nil, err
+        }
+
+        // var customers = make([]Customer, 0, r.QueryResponse.TotalCount)
+        // for i := 0; i < r.QueryResponse.TotalCount; i += queryPageSize {
+                // var page, err = c.fetchCustomerPage(i + 1)
+                // if err != nil {
+                        // return nil, err
+                // }
+                // customers = append(customers, page...)
+        // }
+        return &r.QueryResponse.Customer[0], nil
+}
+
+
 // FetchCustomers gets the full list of Customers in the QuickBooks account.
 func (c *Client) FetchCustomers() ([]Customer, error) {
 
