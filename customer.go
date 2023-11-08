@@ -92,7 +92,7 @@ func (c *Client) QueryCustomerByName(name string) (*Customer, error) {
 		}
 	}
 	err := c.query("SELECT * FROM Customer WHERE DisplayName = '"+
-		strings.Replace(name, "'", "''", -1)+"'", &r)
+		strings.Replace(name, "'", "\'", -1)+"'", &r)
 	if err != nil {
 		return nil, err
 	}
@@ -123,7 +123,7 @@ func (c *Client) QueryCustomerByEmail(email string) (*Customer, error) {
 		}
 	}
 	err := c.query("SELECT * FROM Customer WHERE PrimaryEmailAddr = '"+
-		strings.Replace(email, "'", "''", -1)+"'", &r)
+		strings.Replace(email, "'", "\'", -1)+"'", &r)
 	if err != nil {
 		return nil, err
 	}
