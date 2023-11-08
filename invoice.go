@@ -103,7 +103,7 @@ type SalesItemLineDetail struct {
 	ClassRef  *ReferenceType `json:",omitempty"`
 	UnitPrice json.Number   `json:",omitempty"`
 	//MarkupInfo
-	Qty             float32       `json:",omitempty"`
+	Qty             json.Number    `json:",omitempty"`
 	ItemAccountRef  *ReferenceType `json:",omitempty"`
 	TaxCodeRef      *ReferenceType `json:",omitempty"`
 	ServiceDate     *Date          `json:",omitempty"`
@@ -115,7 +115,7 @@ type SalesItemLineDetail struct {
 // DiscountLineDetail ...
 type DiscountLineDetail struct {
 	PercentBased    bool
-	DiscountPercent float32 `json:",omitempty"`
+	DiscountPercent json.Number `json:",omitempty"`
 }
 
 // FetchInvoices gets the full list of Invoices in the QuickBooks account.
