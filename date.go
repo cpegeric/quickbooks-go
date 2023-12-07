@@ -18,9 +18,12 @@ func (d *Date) UnmarshalJSON(b []byte) (err error) {
 		b = b[1 : len(b)-1]
 	}
 
-	d.Time, err = time.Parse(format, string(b))
+	d.Time, err = time.Parse(time.RFC3339, string(b))
 	if err != nil {
-		d.Time, err = time.Parse(secondFormat, string(b))
+		d.Time, err = time.Parse(format, string(b))
+		if err != nil {
+			d.Time, err = time.Parse(secondFormat, string(b))
+		}
 	}
 
 	return err
